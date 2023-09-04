@@ -12,11 +12,6 @@ app.use(express.urlencoded({ extended: true }));
 
 app.get("*", routes);
 
-app.get("*", (req, res) => {
-    console.log("GET request received that is not defined, routing to landing page");
-    res.sendFile(path.join(__dirname, "./public/index.html"));
-})
-
 app.listen(PORT, () =>
   console.log(`Serving static asset routes at http://localhost:${PORT}!`)
 );
