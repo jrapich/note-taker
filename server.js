@@ -10,10 +10,7 @@ app.use(express.static('public'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.get("/notes", (req, res) => {
-    console.log(`GET request received at /notes`);
-    res.sendFile(path.join(__dirname, "./public/notes.html"));
-})
+app.get("*", routes);
 
 app.get("*", (req, res) => {
     console.log("GET request received that is not defined, routing to landing page");
