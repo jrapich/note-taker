@@ -11,7 +11,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.get("/notes", (req, res) => {
     console.log(`GET request received at /notes`);
-    res.sendFile("notes.html");
+    res.sendFile(path.join(__dirname, "./public/notes.html"));
 })
 
 
