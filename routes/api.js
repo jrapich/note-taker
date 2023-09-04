@@ -11,7 +11,6 @@ api.get("/notes", (req, res) => {
 })
 
 api.post("/notes", (req, res) => {
-    //const {title, text} = req.body;
 
     db.push(req.body);
     console.log(db);
@@ -19,7 +18,9 @@ api.post("/notes", (req, res) => {
     fs.writeFile("./db/db.json", newJson, (err) => {
         if (err) {
             console.error(err);
+            res.status(500);
         } else {
+            res.status(201);
             console.log("new note saved to note database");
         }
     })
