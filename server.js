@@ -12,6 +12,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.get("*", routes);
 app.post("*", routes);
+app.delete("*", routes);
 
 app.listen(PORT, () =>
   console.log(`Serving static asset routes at http://localhost:${PORT}!`)
