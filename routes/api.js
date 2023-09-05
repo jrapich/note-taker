@@ -24,9 +24,13 @@ api.post("/notes", (req, res) => {
     fs.writeFile("./db/db.json", newJson, (err) => {
         if (err) {
             console.error(err);
-            res.status(500);
+            res.sendStatus(500);
         } else {
-            res.status(201);
+            const response = {
+                status: 'success',
+                body: db
+              };
+            res.status(201).json(response);
             console.log("new note saved to note database");
         }
     })
@@ -38,9 +42,9 @@ api.delete("/notes/:id", (req, res)=>{
     fs.writeFile("./db/db.json", newJson, (err) => {
         if (err) {
             console.error(err);
-            res.status(500);
+            res.sendStatus(500);
         } else {
-            res.status(201);
+            res.sendStatus(200);
             console.log(`note id ${req.params.id} deleted from note database`);
         }
     })
