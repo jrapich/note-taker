@@ -20,9 +20,7 @@ api.post("/notes", (req, res) => {
     
 
     db.push(newNote);
-    console.log(db);
     const newJson = JSON.stringify(db);
-    console.log(newJson);
     fs.writeFile("./db/db.json", newJson, (err) => {
         if (err) {
             console.error(err);
@@ -30,6 +28,20 @@ api.post("/notes", (req, res) => {
         } else {
             res.status(201);
             console.log("new note saved to note database");
+        }
+    })
+})
+
+api.delete("/notes/:id", (req, res)=>{
+    //i had no clue how .filter() worked so I based this line on an answer I found on stackoverflow
+    const newJson = JSON.stringify(db.filter(({id}) => id !== req.params.id));
+    fs.writeFile("./db/db.json", newJson, (err) => {
+        if (err) {
+            console.error(err);
+            res.status(500);
+        } else {
+            res.status(201);
+            console.log(`note id ${req.params.id} deleted from note database`);
         }
     })
 })
