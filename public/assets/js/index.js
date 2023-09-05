@@ -48,6 +48,9 @@ const deleteNote = (id) =>
     headers: {
       'Content-Type': 'application/json',
     },
+  }).then(() => {
+    getAndRenderNotes();
+    renderActiveNote();
   });
 
 const renderActiveNote = () => {
@@ -147,7 +150,7 @@ const renderNoteList = async (notes) => {
         'delete-note'
       );
       delBtnEl.addEventListener('click', handleNoteDelete);
-      //delBtnEl.addEventListener('click', getAndRenderNotes);
+      delBtnEl.addEventListener('click', getAndRenderNotes);
 
       liEl.append(delBtnEl);
     }
