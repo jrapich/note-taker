@@ -13,7 +13,6 @@ api.get("/notes", (req, res) => {
 api.post("/notes", (req, res) => {
 
     db.push(req.body);
-    console.log(db);
     const newJson = JSON.stringify(db);
     fs.writeFile("./db/db.json", newJson, (err) => {
         if (err) {
