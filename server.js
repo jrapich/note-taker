@@ -10,6 +10,8 @@ app.use(express.static('public'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+
+//wildcard routes. ALL get, post, delete requests that don't meet the static middleware are routed to route.js for further routing
 app.get("*", routes);
 app.post("*", routes);
 app.delete("*", routes);
